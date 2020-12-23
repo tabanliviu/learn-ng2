@@ -5,11 +5,14 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --hmr",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
+    "storybook": "npm run docs:json && start-storybook -p 6006",
+    "build-storybook": "npm run docs:json && build-storybook"
   },
   "private": true,
   "dependencies": {
@@ -30,8 +33,15 @@
     "@angular-devkit/build-angular": "0.1100.4",
     "@angular/cli": "11.0.4",
     "@angular/compiler-cli": "11.0.4",
+    "@babel/core": "^7.12.10",
+    "@compodoc/compodoc": "^1.1.11",
+    "@storybook/addon-actions": "^6.1.11",
+    "@storybook/addon-essentials": "^6.1.11",
+    "@storybook/addon-links": "^6.1.11",
+    "@storybook/angular": "^6.1.11",
     "@types/jasmine": "3.6.2",
     "@types/node": "12.19.9",
+    "babel-loader": "^8.2.2",
     "codelyzer": "6.0.1",
     "jasmine-core": "3.6.0",
     "jasmine-marbles": "0.6.0",

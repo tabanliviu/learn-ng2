@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,10 +11,18 @@ import { HeroService } from '../hero.service';
 export class DashboardComponent implements OnInit {
   heroes: Hero[] = [];
 
-  constructor(private heroService: HeroService) { }
+  constructor(private heroService: HeroService,
+              private messageService: MessageService) { }
 
   ngOnInit() {
+    console.log(`${this.constructor.name}.ngOnInit`);
+    this.messageService.add(`${this.constructor.name}.ngOnInit`);
     this.getHeroes();
+
+    this.heroService.getMockData()
+      .subscribe((mockData) => {
+        console.log(mockData);
+      });
   }
 
   getHeroes(): void {
